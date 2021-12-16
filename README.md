@@ -63,7 +63,7 @@ Where your `appsettings.json` (or other configuration source) contains a configu
     "Rules": {
       "404": {              // How to handle requests that resulted in a 404 status code.
         "Weight": 20,       // Give them a 20 point penalty.
-        "ExcludedPaths": [ // Except on the following paths.
+        "ExcludedPaths": [  // Except on the following paths.
           "/excluded-404" 
         ]
       },
@@ -84,11 +84,18 @@ Where your `appsettings.json` (or other configuration source) contains a configu
 }
 ```
 
+### Stores
+
+RequestDropper comes with 2 default stores for keeping track of the requests.
+`MemoryCacheStore` and the `DistributedCacheStore`
+
+See `RequestDropper.Mongo` for creating a custom store and logic or if something more presistant is required.
+
 ### Specifications
 
 #### Overwriting default behaviour.
 By default requests are tried together using the IP Address
-This can be changed by overridding the `Key` method on the RequestHandle
+This can be changed by overriding the `Key` method on the RequestHandle
 
 ```C#
 public class CustomHandler : NativeRequestHandler
@@ -116,6 +123,8 @@ public class CustomHandler : NativeRequestHandler
 - [ ] TODO: X-Forwarded-For or X-Real-IP headers for default keys.
 - [ ] TODO: Some sort of Mediator logic so block events can be listened to.
 - [ ] TODO: Improved docs.
+- [ ] TODO: Redis based store.
+- [ ] TODO: Clean the code.
 
 ## Licensing
 
