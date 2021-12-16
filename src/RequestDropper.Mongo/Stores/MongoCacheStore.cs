@@ -19,7 +19,7 @@ namespace RequestDropper.Mongo.Stores
 
         public async Task<T> GetAsync(string key)
         {
-            var findCursor = await this.collection.FindAsync(Builders<T>.Filter.Eq(x => x.Key, key), new FindOptions<T>() { BatchSize = 1, Limit = 1 });
+            var findCursor = await this.collection.FindAsync(Builders<T>.Filter.Eq(x => x.Key, key), new FindOptions<T> { BatchSize = 1, Limit = 1 });
             return await findCursor.FirstOrDefaultAsync();
         }
 

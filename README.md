@@ -3,7 +3,8 @@
 ![Icon](images/icon.png)
 # RequestDropper
 A request-dropping extension for ASP.NET Core
-    
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/37469b3479e446889dcdec6e7562242a)](https://app.codacy.com/gh/Skamiplan/RequestDropper/dashboard)
 ![Build](https://img.shields.io/github/workflow/status/Skamiplan/RequestDropper/Build)
 [![NuGet](https://img.shields.io/nuget/v/RequestDropper.svg)](https://www.nuget.org/packages/RequestDropper/)
 </div>
