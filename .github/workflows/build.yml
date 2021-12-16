@@ -1,0 +1,55 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request: 
+  release:
+    types: [ published ]
+
+env:
+  # Disable the .NET logo in the console output.
+  DOTNET_NOLOGO: true
+  # Disable the .NET first time experience to skip caching NuGet packages and speed up the build.
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  # Disable sending .NET CLI telemetry to Microsoft.
+  DOTNET_CLI_TELEMETRY_OPTOUT: true   
+  
+  DOTNETVERSION: "6.0.x"
+
+  BUILD_ARTIFACT_PATH: ${{github.workspace}}/build-artifacts
+
+
+jobs:
+
+  build:
+    name: Build 
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Setup .NET Core SDK ${{ env.DOTNETVERSION }}
+      uses: actions/setup-dotnet@v1
+      with:
+          dotnet-version: ${{ env.DOTNETVERSION }}
+          
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore -c Release
+      
+    - name: Test with Coverage
+      run: dotnet test --no-restore --logger trx --results-directory ${{env.BUILD_ARTIFACT_PATH}}/coverage --collect "XPlat Code Coverage" --settings CodeCoverage.runsettings /p:SkipBuildVersioning=true
+      
+    - name: Pack
+      run: dotnet pack --no-build -c Release /p:PackageOutputPath=${{env.BUILD_ARTIFACT_PATH}}
+      
+    - name: Publish artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{matrix.os}}
+        path: ${{env.BUILD_ARTIFACT_PATH}}
