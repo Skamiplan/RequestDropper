@@ -5,7 +5,7 @@ using RequestDropper.Handlers;
 
 namespace RequestDropper.Middleware
 {
-    public class RequestDropperMiddleware<THandler, TCounter> : RequestDropMiddleware<THandler, TCounter> where THandler : RequestHandler<TCounter>
+    public class RequestDropperMiddleware<THandler, TCounter> : RequestDropMiddleware<THandler, TCounter> where THandler : IRequestHandler<TCounter>
     {
         public RequestDropperMiddleware(RequestDelegate next, THandler handler, ILogger<RequestDropperMiddleware<THandler, TCounter>> logger)
             : base(next, handler, logger)

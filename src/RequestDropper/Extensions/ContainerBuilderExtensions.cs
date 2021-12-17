@@ -31,7 +31,7 @@ namespace RequestDropper.Extensions
         public static RequestDropperBuilder AddDistributedCacheStore(this RequestDropperBuilder builder)
         {
             builder.Services.AddDistributedMemoryCache();
-            builder.Services.AddSingleton<NativeRequestHandler>();
+            builder.Services.TryAddSingleton<IRequestHandler<DropCounter?>, NativeRequestHandler>();
             builder.Services.TryAddSingleton<IStore<DropCounter?>, DistributedCacheStore<DropCounter?>>();
             return builder;
         }
@@ -44,7 +44,7 @@ namespace RequestDropper.Extensions
         public static RequestDropperBuilder AddMemoryCacheStore(this RequestDropperBuilder builder)
         {
             builder.Services.AddMemoryCache();
-            builder.Services.AddSingleton<NativeRequestHandler>();
+            builder.Services.TryAddSingleton<IRequestHandler<DropCounter?> ,NativeRequestHandler>();
             builder.Services.TryAddSingleton<IStore<DropCounter?>, MemoryCacheStore<DropCounter?>>();
             return builder;
         }

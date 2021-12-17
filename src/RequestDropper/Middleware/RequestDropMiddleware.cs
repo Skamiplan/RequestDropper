@@ -12,7 +12,7 @@ namespace RequestDropper.Middleware
     /// </summary>
     /// <typeparam name="THandler">The type representing the <see cref="RequestHandler{TCounter}"/></typeparam>
     /// <typeparam name="TCounter">The type of class that will be used to store the counts.</typeparam>
-    public abstract class RequestDropMiddleware<THandler, TCounter> where THandler : RequestHandler<TCounter>
+    public abstract class RequestDropMiddleware<THandler, TCounter> where THandler : IRequestHandler<TCounter>
     {
         private readonly RequestDelegate _next;
 

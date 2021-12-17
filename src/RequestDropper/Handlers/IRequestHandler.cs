@@ -26,6 +26,13 @@ namespace RequestDropper.Handlers
         Task IncrementCounterAsync(DropperRule rule, string key);
 
         /// <summary>
+        /// Check if the quotaExceeded
+        /// </summary>
+        /// <param name="counter">The <see cref="DropCounter"/> to be checked.</param>
+        /// <returns>True if the <see cref="DropCounter"/> exceeded the limit given in <see cref="DropperSettings"/>.</returns>
+        Task<bool> QuotaExceededAsync(T counter);
+
+        /// <summary>
         /// Get the rule for the corresponding parameters.
         /// </summary>
         /// <param name="statusCode">The statusCode for the response.</param>

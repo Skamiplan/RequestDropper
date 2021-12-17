@@ -30,7 +30,7 @@ namespace RequestDropper.Extensions
         public static IApplicationBuilder UseRequestDropperMiddleware(
             this IApplicationBuilder builder)
         {
-            return builder.UseMiddleware<RequestDropperMiddleware<NativeRequestHandler, DropCounter?>>();
+            return builder.UseMiddleware<RequestDropperMiddleware<IRequestHandler<DropCounter?>, DropCounter?>>();
         }
     }
 }
