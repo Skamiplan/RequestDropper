@@ -8,7 +8,7 @@ using RequestDropper.Stores;
 
 namespace RequestDropper.Mongo.Stores
 {
-    public class MongoCacheStore<T> : IStore<T> where T : MongoDropCounter
+    internal class MongoCacheStore<T> : IStore<T> where T : MongoDropCounter
     {
         private readonly IMongoCollection<T> collection;
         public MongoCacheStore(IMongoDatabase database)

@@ -9,7 +9,7 @@ namespace RequestDropper.Stores
     /// The <see cref="MemoryCacheStore{T}"/> for RequestDropper.
     /// </summary>
     /// <typeparam name="T"><see cref="T"/></typeparam>
-    public class MemoryCacheStore<T> : IStore<T> 
+    internal class MemoryCacheStore<T> : IStore<T> 
     {
         private readonly IMemoryCache _cache;
 

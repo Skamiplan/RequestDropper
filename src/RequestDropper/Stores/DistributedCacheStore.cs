@@ -10,7 +10,7 @@ namespace RequestDropper.Stores
     /// The <see cref="DistributedCacheStore{T}"/> for RequestDropper.
     /// </summary>
     /// <typeparam name="T"><see cref="T"/></typeparam>
-    public class DistributedCacheStore<T> : IStore<T> where T : struct
+    internal class DistributedCacheStore<T> : IStore<T> where T : struct
     {
         private readonly IDistributedCache _cache;
 
