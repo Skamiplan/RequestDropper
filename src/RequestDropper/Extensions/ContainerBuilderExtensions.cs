@@ -32,7 +32,7 @@ namespace RequestDropper.Extensions
         {
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSingleton<NativeRequestHandler>();
-            builder.Services.TryAddSingleton<IStore<DropCounter>, DistributedCacheStore<DropCounter>>();
+            builder.Services.TryAddSingleton<IStore<DropCounter?>, DistributedCacheStore<DropCounter?>>();
             return builder;
         }
 
