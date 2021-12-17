@@ -45,12 +45,12 @@ namespace RequestDropper.Handlers
         /// <returns>The limit.</returns>
         int GetLimit();
 
-        /// <summary>
-        /// Get the key belonging to the <see cref="HttpContext"/>.
-        /// </summary>
-        /// <param name="context"><see cref="HttpContext"/>.</param>
-        /// <returns>The key that belongs to the <see cref="context"/></returns>
-        string Key(HttpContext context);
+        ///// <summary>
+        ///// Get the key belonging to the <see cref="HttpContext"/>.
+        ///// </summary>
+        ///// <param name="context"><see cref="HttpContext"/>.</param>
+        ///// <returns>The key that belongs to the <see cref="context"/></returns>
+        //string Key(HttpContext context);
         
         /// <summary>
         /// Get the message that should be shown while blocked.

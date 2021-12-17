@@ -86,15 +86,15 @@ namespace RequestDropper.Handlers
             return this._dropperSettings.Limit;
         }
 
-        /// <summary>
-        /// Get the key belonging to the <see cref="HttpContext"/>.
-        /// </summary>
-        /// <param name="context"><see cref="HttpContext"/>.</param>
-        /// <returns>The key that belongs to the <see cref="context"/></returns>
-        public virtual string Key(HttpContext context)
-        {
-            return context.Connection.RemoteIpAddress?.MapToIPv4().ToString() ?? IPAddress.None.ToString();
-        }
+        ///// <summary>
+        ///// Get the key belonging to the <see cref="HttpContext"/>.
+        ///// </summary>
+        ///// <param name="context"><see cref="HttpContext"/>.</param>
+        ///// <returns>The key that belongs to the <see cref="context"/></returns>
+        //public virtual string Key(HttpContext context)
+        //{
+        //    return context.Connection.RemoteIpAddress?.MapToIPv4().ToString() ?? IPAddress.None.ToString();
+        //}
 
         /// <summary>
         /// Get the message that should be shown while blocked.

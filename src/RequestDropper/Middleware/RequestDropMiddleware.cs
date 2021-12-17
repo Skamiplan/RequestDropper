@@ -3,6 +3,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
+using RequestDropper.CounterKeyBuilders;
 using RequestDropper.Handlers;
 
 namespace RequestDropper.Middleware
@@ -18,6 +19,8 @@ namespace RequestDropper.Middleware
 
         private readonly THandler _handler;
 
+        private readonly ICounterKeyBuilder _counterKeyBuilder;
+
         private readonly ILogger<RequestDropperMiddleware<THandler, TCounter>> logger;
 
         /// <summary>
@@ -25,11 +28,13 @@ namespace RequestDropper.Middleware
         /// </summary>
         /// <param name="next"><see cref="RequestDelegate"/></param>
         /// <param name="handler"><see cref="THandler"/></param>
+        /// <param name="counterKeyBuilder"><see cref="ICounterKeyBuilder"/></param>
         /// <param name="logger"><see cref="ILogger"/></param>
-        protected RequestDropMiddleware(RequestDelegate next, THandler handler, ILogger<RequestDropperMiddleware<THandler, TCounter>> logger)
+        protected RequestDropMiddleware(RequestDelegate next, THandler handler, ICounterKeyBuilder counterKeyBuilder, ILogger<RequestDropperMiddleware<THandler, TCounter>> logger)
         {
             this._next = next;
             this._handler = handler;
+            this._counterKeyBuilder = counterKeyBuilder;
             this.logger = logger;
         }
 
@@ -42,7 +47,7 @@ namespace RequestDropper.Middleware
                 return;
             }
 
-            var dropCounter = await this._handler.HandleRequestAsync(this._handler.Key(context));
+            var dropCounter = await this._handler.HandleRequestAsync(this._counterKeyBuilder.Build(context));
 
             if (await this._handler.QuotaExceededAsync(dropCounter))
             {
@@ -58,9 +63,9 @@ namespace RequestDropper.Middleware
                 return;
             }
 
-            this.logger.LogWarning("Increasing counter for key '{key}' with weight {weight} due to statuscode {statusCode} on path {path}", this._handler.Key(context), rule.Weight, context.Response.StatusCode, context.Request.Path);
+            this.logger.LogWarning("Increasing counter for key '{key}' with weight {weight} due to statuscode {statusCode} on path {path}", this._counterKeyBuilder.Build(context), rule.Weight, context.Response.StatusCode, context.Request.Path);
 
-            await this._handler.IncrementCounterAsync(rule, this._handler.Key(context));
+            await this._handler.IncrementCounterAsync(rule, this._counterKeyBuilder.Build(context));
         }
 
         /// <summary>
@@ -70,16 +75,16 @@ namespace RequestDropper.Middleware
         /// <returns><see cref="Task"/></returns>
         protected virtual Task ReturnQuotaExceededResponse(HttpContext context)
         {
-            this.logger.LogWarning("Returning Quota Exceeded for key '{key}', threshold of '{threshold}'", this._handler.Key(context), this._handler.GetLimit());
+            this.logger.LogWarning("Returning Quota Exceeded for key '{key}', threshold of '{threshold}'", this._counterKeyBuilder.Build(context), this._handler.GetLimit());
 
             if (!string.IsNullOrEmpty(this._handler.GetRedirect()))
             {
-                this.logger.LogInformation("Redirecting to '{redirect}' for key '{key}'", this._handler.GetRedirect(), this._handler.Key(context));
+                this.logger.LogInformation("Redirecting to '{redirect}' for key '{key}'", this._handler.GetRedirect(), this._counterKeyBuilder.Build(context));
                 context.Response.Redirect(this._handler.GetRedirect());
                 return Task.CompletedTask;
             }
 
-            this.logger.LogInformation("Returning Too Many Requests response for key '{key}'", this._handler.Key(context));
+            this.logger.LogInformation("Returning Too Many Requests response for key '{key}'", this._counterKeyBuilder.Build(context));
 
             var message = this._handler.GetMessage();
             if (string.IsNullOrEmpty(message))

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
+using RequestDropper.CounterKeyBuilders;
 using RequestDropper.Handlers;
 using RequestDropper.Models;
 using RequestDropper.Stores;
@@ -19,6 +20,7 @@ namespace RequestDropper.Extensions
         public static RequestDropperBuilder AddRequestDropper(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<DropperSettings>(configuration.GetSection(nameof(DropperSettings)));
+            services.TryAddSingleton<ICounterKeyBuilder, IpCounterKeyBuilder>();
             services.AddLogging();
             return new RequestDropperBuilder(services, configuration);
         }
