@@ -124,7 +124,7 @@ public class CustomHandler : NativeRequestHandler
 - [ ] TODO: X-Forwarded-For or X-Real-IP headers for default keys.
 - [ ] TODO: Some sort of Mediator logic so block events can be listened to.
 - [ ] TODO: Improved docs.
-- [ ] TODO: Redis based store.
+- [x] TODO: Redis based store.
 - [ ] TODO: Clean the code.
 
 ## Licensing
