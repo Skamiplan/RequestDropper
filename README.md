@@ -90,7 +90,7 @@ Where your `appsettings.json` (or other configuration source) contains a configu
 RequestDropper comes with 2 default stores for keeping track of the requests.
 `MemoryCacheStore` and the `DistributedCacheStore`
 
-See `RequestDropper.Mongo` for creating a custom store and logic or if something more presistant is required.
+See `RequestDropper.Mongo` for creating a custom store and logic or if something more presistant is required and you don't (for whatver reason) want to use Redis.
 
 ### Specifications
 
