@@ -2,7 +2,7 @@
 
 namespace RequestDropper.Models
 {
-    public readonly struct DropCounter : IEquatable<DropCounter>
+    public struct DropCounter : IEquatable<DropCounter>
     {
         public DropCounter(int count, DateTimeOffset timeStamp)
         {
@@ -10,8 +10,8 @@ namespace RequestDropper.Models
             TimeStamp = timeStamp;
         }
 
-        public int Count { get; }
-        public DateTimeOffset TimeStamp { get; }
+        public int Count { get; set; }
+        public DateTimeOffset TimeStamp { get; set; }
 
         #region Equality members
 

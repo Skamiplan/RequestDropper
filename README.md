@@ -121,10 +121,9 @@ public class CustomHandler : NativeRequestHandler
 - [ ] TODO: Whitelist IP Addresses as a setting.
 - [ ] TODO: Separate `Key` logic into it's own class.
 - [ ] TODO: Hash default keys.
-- [ ] TODO: X-Forwarded-For or X-Real-IP headers for default keys.
-- [ ] TODO: Some sort of Mediator logic so block events can be listened to.
+- [ ] TODO: Some sort of Mediatr logic so block events can be listened to.
 - [ ] TODO: Improved docs.
-- [ ] TODO: Redis based store.
+- [x] TODO: Redis based store.
 - [ ] TODO: Clean the code.
 
 ## Licensing
