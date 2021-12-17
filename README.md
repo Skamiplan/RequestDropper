@@ -15,7 +15,7 @@ This repository contains the C# source code for RequestDropper. You should [get 
     PM> Install-Package RequestDropper
 
 ## Overview
-Requestdropper tries to bring some peace of mind to the developer who wants to get rid of certain requests by returning a 429 or a 302 status code.
+Requestdropper tries to bring some peace of mind to the developer who wants to get rid of requests after a certain amount of configured rules have been voilated by returning a 429 or a 302 status code.
 
 Some of the major features include:
 - High performance
