@@ -5,7 +5,7 @@
 A request-dropping extension for ASP.NET Core
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/37469b3479e446889dcdec6e7562242a)](https://app.codacy.com/gh/Skamiplan/RequestDropper/dashboard)
-[![Codecov](https://img.shields.io/codecov/c/github/Skamiplan/RequestDropper/main.svg)](https://codecov.io/gh/Skamiplan/RequestDropper)
+[![codecov](https://codecov.io/gh/Skamiplan/RequestDropper/branch/main/graph/badge.svg?token=M89JEFLCQ2)](https://codecov.io/gh/Skamiplan/RequestDropper)
 ![Build](https://img.shields.io/github/workflow/status/Skamiplan/RequestDropper/Build)
 [![NuGet](https://img.shields.io/nuget/v/RequestDropper.svg)](https://www.nuget.org/packages/RequestDropper/)
 </div>
