@@ -10,6 +10,7 @@ using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 
 using RequestDropper.Extensions;
+using RequestDropper.Handlers;
 using RequestDropper.Mongo.Handlers;
 using RequestDropper.Mongo.Models;
 using RequestDropper.Mongo.Settings;
@@ -45,7 +46,7 @@ namespace RequestDropper.Mongo.Extensions
                     return database;
                 });
 
-            services.Services.AddSingleton<MongoRequestHandler>();
+            services.Services.TryAddSingleton<IRequestHandler<MongoDropCounter?>, MongoRequestHandler>();
             services.Services.TryAddSingleton<IStore<MongoDropCounter>, MongoCacheStore<MongoDropCounter>>();
             return services;
         }

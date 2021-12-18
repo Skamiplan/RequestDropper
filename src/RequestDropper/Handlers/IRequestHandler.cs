@@ -11,14 +11,14 @@ namespace RequestDropper.Handlers
     public interface IRequestHandler<T>
     {
         /// <summary>
-        /// Get the <see cref="DropCounter"/> that belongs to the <see cref="key"/>
+        /// Get the <see cref="T"/> that belongs to the <see cref="key"/>
         /// </summary>
         /// <param name="key"><see cref="key"/></param>
         /// <returns>The <see cref="DropCounter"/> belonging to the <see cref="key"/></returns>
         Task<T> HandleRequestAsync(string key);
 
         /// <summary>
-        /// Increase the <see cref="DropCounter"/> belonging to the <see cref="key"/>
+        /// Increase the <see cref="T"/> belonging to the <see cref="key"/>
         /// </summary>
         /// <param name="rule"><see cref="DropperRule"/></param>
         /// <param name="key"><see cref="key"/></param>
@@ -28,8 +28,8 @@ namespace RequestDropper.Handlers
         /// <summary>
         /// Check if the quotaExceeded
         /// </summary>
-        /// <param name="counter">The <see cref="DropCounter"/> to be checked.</param>
-        /// <returns>True if the <see cref="DropCounter"/> exceeded the limit given in <see cref="DropperSettings"/>.</returns>
+        /// <param name="counter">The <see cref="T"/> to be checked.</param>
+        /// <returns>True if the <see cref="T"/> exceeded the limit given in <see cref="DropperSettings"/>.</returns>
         Task<bool> QuotaExceededAsync(T counter);
 
         /// <summary>
