@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestDropper.Mongo", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example", "example\Web\Example.csproj", "{89548D22-4E57-4F10-BA21-8AC62152A258}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DBEACCE9-4861-4D3D-A0B7-E6B5248B3F06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestDropper.Middleware.Tests", "tests\RequestDropper.Middleware.Tests\RequestDropper.Middleware.Tests.csproj", "{C1D622C1-0D92-432F-9880-50F4BFB60A6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,10 @@ Global
 		{89548D22-4E57-4F10-BA21-8AC62152A258}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89548D22-4E57-4F10-BA21-8AC62152A258}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89548D22-4E57-4F10-BA21-8AC62152A258}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1D622C1-0D92-432F-9880-50F4BFB60A6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1D622C1-0D92-432F-9880-50F4BFB60A6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1D622C1-0D92-432F-9880-50F4BFB60A6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1D622C1-0D92-432F-9880-50F4BFB60A6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +47,7 @@ Global
 		{F7AE35A5-5F78-41ED-8373-C53B199B5F90} = {41554D7C-118E-45F3-BB50-737395730EBC}
 		{163B7EED-3480-4E9C-9191-15F2E6873B41} = {41554D7C-118E-45F3-BB50-737395730EBC}
 		{89548D22-4E57-4F10-BA21-8AC62152A258} = {8EE67CFB-5BC5-4D81-B7C0-ED8015C1946F}
+		{C1D622C1-0D92-432F-9880-50F4BFB60A6E} = {DBEACCE9-4861-4D3D-A0B7-E6B5248B3F06}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A6B5BBE1-E606-46DB-BE5D-4E040FEED582}
