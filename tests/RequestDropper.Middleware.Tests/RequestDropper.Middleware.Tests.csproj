@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\RequestDropper.Mongo\RequestDropper.Mongo.csproj" />
     <ProjectReference Include="..\..\src\RequestDropper\RequestDropper.csproj" />
   </ItemGroup>
 

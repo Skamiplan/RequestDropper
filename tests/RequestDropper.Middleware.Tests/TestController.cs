@@ -6,10 +6,16 @@ namespace RequestDropper.Middleware.Tests
     [Route("")]
     public class TestController : ControllerBase
     {
-        [HttpGet("{statusCode}")]
+        [HttpGet("index/{statusCode}")]
         public IActionResult Index(int statusCode)
         {
             return StatusCode(statusCode);
-        } 
+        }
+
+        [HttpGet("home/{statusCode}")]
+        public IActionResult Home(int statusCode)
+        {
+            return StatusCode(statusCode);
+        }
     }
 }
